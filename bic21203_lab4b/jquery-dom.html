@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 3 - jQuery DOM</title>
+
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        .myStyle {
+            background-color: coral;
+            padding: 16px;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Question 3 - jQuery DOM Manipulation</h1>
+
+    <!-- Operation A -->
+    <h2>Operation A: Change Text</h2>
+    <div id="myElement">Original Text</div>
+
+    <!-- Operation B -->
+    <h2>Operation B: Add CSS Class</h2>
+    <div id="myDIV">
+        <p>I am a myDIV.</p>
+    </div>
+
+    <!-- Operation C -->
+    <h2>Operation C: Button Click Event</h2>
+    <button id="myButton">Click me</button>
+
+    <script>
+        // Wait until the webpage is ready
+        $(document).ready(function() {
+
+            // A. Change the text using jQuery
+            $("#myElement").text("Modified Text");
+
+            // B. Add a CSS class using jQuery
+            $("#myDIV").addClass("myStyle");
+
+            // C. Handle button click using jQuery
+            $("#myButton").on("click", function() {
+                alert("Button clicked!");
+            });
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Information</title>
+</head>
+<body>
+
+    <h1>Book Information</h1>
+
+    <div id="bookInfo">
+        <p>Loading book information...</p>
+    </div>
+
+    <script>
+        // Retrieve JSON data
+        fetch("books.json")
+
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Unable to retrieve book data.");
+                }
+
+                return response.json();
+            })
+
+            .then(data => {
+
+                const books = data.books;
+                const bookInfo = document.getElementById("bookInfo");
+
+                bookInfo.textContent = "";
+
+                // Display first book title
+                const firstBookTitle = document.createElement("p");
+
+                firstBookTitle.textContent =
+                    "First Book Title: " + books[0].title;
+
+                bookInfo.appendChild(firstBookTitle);
+
+                // Display second book author
+                const secondBookAuthor = document.createElement("p");
+
+                secondBookAuthor.textContent =
+                    "Second Book Author: " + books[1].author;
+
+                bookInfo.appendChild(secondBookAuthor);
+
+                // Display genres heading
+                const genreHeading = document.createElement("h2");
+
+                genreHeading.textContent = "Genres by Book";
+
+                bookInfo.appendChild(genreHeading);
+
+                // Display genres for both books
+                books.forEach(book => {
+
+                    const genreParagraph = document.createElement("p");
+
+                    genreParagraph.textContent =
+                        book.title + " — " + book.genres.join(", ");
+
+                    bookInfo.appendChild(genreParagraph);
+                });
+
+            })
+
+            .catch(error => {
+
+                const bookInfo = document.getElementById("bookInfo");
+
+                bookInfo.textContent =
+                    "Sorry, unable to load book information. Please try again.";
+
+                console.error("Error:", error);
+            });
+    </script>
+
+</body>
+</html>
